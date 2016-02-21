@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>团队照片</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+	<link href="../css/style-model.css" rel="stylesheet">
+		
+	</head>
+	<body>
+		
+		<div class="modal fade" id="myModal" >
+			<div class="modal-dialog  modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss = "modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalTitle" >图片预览</h4>
+					</div>
+					<div class="modal-body">
+						<img src="" style="max-width: 1050px;height: 500px;"/>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="head">
+			<div class="wrap">
+				<img src="../images/logo.png" / alt="cqupt">
+				<p class="context">网络与信息安全技术市级工程实验室</p>
+			</div>
+		</div>
+		<div id="menuList" class="navList">
+			<div id="menuList-wrap">
+				<a href="../index.jsp" class="connection" >首页</a>
+				<a href="newsList.jsp" class="connection">通知公告</a>
+				<a href="team_intruoduce.html" class="connection" style="color:yellow">团队介绍</a>
+				<a href="teamPhoto.html" class="connection">团队文化</a>
+				<a href="aboutUs.html" class="connection">关于我们</a>
+			</div>
+			<div id="navbottomtip"></div>
+		</div>
+		
+
+		
+		<div class="img-wrap">
+			
+		</div>
+		
+		<div class="contain clearfix">
+			<div class="project_news_type">
+				<h2 class="news-center">团队项目</h2>
+				<div id="navbar" class="new_type_content">
+					<ul class="nav nav-tabs nav-tabs-li" role="tablist">
+						<!--<li><a href="#content1" >面向非结构化数据的并行挖掘算...</a></li>
+						<li><a href="#content2">科技处科研成果管理系统</a></li>
+						<li><a href="#content3">基于新浪微博的社交网络用户行...</a></li>
+						<li><a href="#content4">多安全等级虚拟桌面系统关键技...</a></li>
+						<li><a href="#content5">Ipox蛋白质组信息学分析系统</a></li>
+						<li><a href="#content6">GPRS行业应用诊断精灵</a></li>-->
+						
+					</ul>
+				</div>
+			</div>
+			<div class="project_list_box ">
+				<div class="panel panel-default">
+				<div class="panel-heading">
+					团队项目
+					<ol class="breadcrumb">
+					  <li><a href="#">首页</a></li>
+					  <li class="active">团队项目</li>
+					</ol>
+				</div>
+				<div class="panel-body"></div>
+			</div>
+			</div><!--list_box结束-->
+			</div>
+		
+		
+		<div class="footer">
+			<p><span>联系我们 (∩_∩)</span> | 重庆邮电大学 | 重庆市南岸区崇文路2号 | 400065 | 渝ICP：10005091-2</p>
+		</div>
+		<script src="../js/jquery-1.11.2.min.js"></script>
+		<script src="../js/script-model.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script>
+			$(function(){
+
+			$('#myTab a:first').tab('show');
+			
+			
+			/*ajax加载页面*/
+			$.ajax({
+				type:"post",
+				url:"../findAllProject.action",
+				async:true,
+				dataType:"json",
+				success:function(data){
+					var Lihtml='';
+					for(var i=0,len=data.length;i<len;i++){
+						/*针对于li 开始*/
+						var ProjectName= data[i].name;
+						Lihtml+="<li><a href=#content"+(i+1)+">"+ProjectName+"</a></li>";
+						/*针对于li 结束*/
+						
+						var divRow=$('<div class="row" style="display:none" id="content'+(i+1)+'" data="'+i+'"></div>');
+						var tabBody=$(' <div class="col-md-11"></div>');
+						var tabUl=$('<ul id="myTab" class="nav nav-tabs"><li class="active"><a href="#home'+(i+1)+'" data-toggle="tab">项目详情</a></li><li><a href="#profile'+(i+1)+'" data-toggle="tab">参与者</a></li><li><a href="#reward'+(i+1)+'" data-toggle="tab">获得奖项</a></li></ul>');
+						var myTabContent=$('<div id="MyTabContent" class="tab-content"></div>');
+						var tabHome=$('<div class="tab-pane fade in active" style="min-height:126px" id="home'+(i+1)+'"></div>');
+						var tabProfile=$('<div class="tab-pane fade" style="min-height:126px" id="profile'+(i+1)+'"></div>');
+						var tabReward=$('<div class="tab-pane fade" style="min-height:126px" id="reward'+(i+1)+'"></div>');
+						var projectPhoto=$('<div class="col-md-11"><ul class="list-group"><li class="list-group-item list-group-item-info">项目图片</li></ul></div>');
+						$('.panel-body').append(divRow);
+						divRow.append(tabBody);
+						divRow.append(projectPhoto);
+						tabBody.append(tabUl);
+						tabBody.append(myTabContent);
+						myTabContent.append(tabHome);
+						myTabContent.append(tabProfile);
+						myTabContent.append(tabReward);
+						//分别在三个tab标签里加内容
+						var homeContent=$("<h4>项目名称："+data[i].name+"</h4><br/><p>"+data[i].description+"</p>");
+						tabHome.append(homeContent);
+						var profileContent=$("<p style='margin-top:10px;line-height:20px;'>"+data[i].joinperson+"</p>");
+						tabProfile.append(profileContent);
+						var rewardContent=$("<p style='margin-top:10px;line-height:20px'>"+data[i].awards+"</p>");
+						tabReward.append(rewardContent);
+						
+						
+						//添加照片
+						for(var j=0;j<data[i].imageList.length;j++){
+							var photoWrap=$('<div class=" col-md-5" style="height:250px;"></div>');
+							var img=$('<a href="#" class="thumbnail"><img src="../'+data[i].imageList[j].path+'" alt="暂无图片" data-toggle="modal" data-target="#myModal"></a>');
+							var caption=$('<div class="caption"><h5>'+data[i].name+'</h5></div>');
+							photoWrap.append(img);
+							photoWrap.append(caption);
+							divRow.append(photoWrap);
+						}
+					}
+					
+					$('.new_type_content ul').html(Lihtml);//针对于li的插入
+					$('.row:first').fadeIn();//让第一个row显示
+					changeProject();
+					
+					$(".panel-body .row img").each(function(){
+				
+					$(this).click(function(){
+					var osrc=$(this).attr("src");
+					console.log("11111");
+					console.log(osrc);
+					$("#myModal .modal-body img").attr("src",osrc);
+						})
+					})
+				}
+			});
+			
+			
+			
+			
+			/*项目分块显示*/
+			function changeProject(){
+			var liArry= $("#navbar ul li");
+			var rowArry=$(".row");
+			var rowIndex= rowArry.attr("data");
+			liArry.each(function(i){
+				$(this).click(function(){
+					liArry.find('a').removeClass('active-li');
+					$(this).find('a').addClass('active-li');
+					var liIndex=$(this).index();
+					rowArry.each(function(){
+						
+						$(this).hide();
+					});
+				    $(".row[data="+liIndex+"]").fadeIn();
+				});
+			});
+			};
+	});
+	</script>
+	</body>
+	</body>
+</html>

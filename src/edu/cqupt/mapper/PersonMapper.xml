@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper  
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.cqupt.mapper.PersonMapper">
+
+	<select id="findAllPerson" parameterType="int" resultType="person">
+		select * from person where person_state=#{state}
+	</select>
+	
+	<select id="findPersonById" parameterType="person" resultType="person">
+		select * from person
+		<where>
+			<if test="person_id!=null">
+				and person_id=#{person_id}
+			</if>
+			<if test="person_state!=null">
+				and person_state=#{person_state}
+			</if>
+		</where>
+		
+	</select>
+	
+	<insert id="addPerson" parameterType="person">
+		insert into person (person_name,work,description,person_image,person_state) value
+		(#{person_name},#{work},#{description},#{person_image},#{person_state})
+	</insert>
+	
+	<delete id="deletePerson" parameterType="Integer"> 
+		delete from person where person_id=#{person_id}
+	</delete>
+	
+	<update id="editPerson" parameterType="person">
+		update person set person_name=#{person_name},
+			work=#{work},description=#{description},
+			person_image=#{person_image},person_state=#{person_state}
+		where person_id=#{person_id}
+	</update>
+</mapper> 

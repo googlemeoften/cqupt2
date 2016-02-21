@@ -1,0 +1,194 @@
+html {
+  /* overflow-y:hidden ;*/
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Microsoft Yahei';
+   background-color: #f2f4f8;;
+  
+  }
+.main-box{
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.bg-info{
+	background-color: #545ca6;
+}
+.bg-info .navbar-brand{
+	color: #ffffff;
+}
+.content-box{
+	position: absolute;
+  	width: 100%;
+  	/*left: 0;*/
+  	top: 50px;
+  	bottom: 0;
+}
+.indent{
+	padding: 15px;
+}
+.aside{
+	width: 12.8%;
+	height: 100%;
+	background:#545ca6 ;
+	border-top: 1px solid #FFFFFF;
+	float: left;
+}
+.navlist{
+	width: 100%;
+}
+.text-sm{
+	font-size: 12px;
+	color: #acb7c1 !important;
+}
+.navlist li a{
+	color:#d8dde2;
+}
+.navlist li a:focus{
+	background-color: #495098 ;
+}
+.navlist .hover-color:hover{
+	  background: #495098;
+}
+
+.navlist .text-sm:hover{
+	background-color: #545ca6;
+}
+.hover-color .fa {
+	  margin-right: 10px;
+}
+.dropdown{
+	margin-right: 13px;
+}
+.content{
+	margin 0 auto;
+	height: 100%;
+	width: 87%;
+	padding: 10px;
+	background: #FFF;
+	float:right;
+	
+}
+.wrapper{
+	padding: 10px;
+}
+html {
+  /* overflow-y:hidden ;*/
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Microsoft Yahei';
+   background-color: #f2f4f8;;
+  
+  }
+.main-box{
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.bg-info{
+	background-color: #545ca6;
+}
+.bg-info .navbar-brand{
+	color: #ffffff;
+}
+.content-box{
+	position: absolute;
+  	width: 100%;
+  	/*left: 0;*/
+  	top: 50px;
+  	bottom: 0;
+}
+.indent{
+	padding: 15px;
+}
+.aside{
+	width: 12.9%;
+	height: 100%;
+	background:#545ca6 ;
+	border-top: 1px solid #FFFFFF;
+	float: left;
+}
+.navlist{
+	width: 100%;
+}
+.text-sm{
+	font-size: 12px;
+	color: #acb7c1 !important;
+}
+.navlist li a{
+	color:#d8dde2;
+}
+.navlist li a:focus{
+	background-color: #495098 ;
+}
+.navlist .hover-color:hover{
+	  background: #495098;
+}
+
+.navlist .text-sm:hover{
+	background-color: #545ca6;
+}
+.hover-color .fa {
+	  margin-right: 10px;
+}
+.dropdown{
+	margin-right: 13px;
+}
+.content{
+	margin 0 auto;
+	height: 100%;
+	width: 87%;
+	padding: 10px;
+	background: #FFF;
+	float:right;
+	
+}
+.wrapper{
+	padding: 10px;
+}
+.input-s-sm{
+	width: 120px;
+	margin-right: 0;
+}
+.select-border{
+	border: 1px solid #adadad;
+}
+.pagination{
+	margin:0;
+}
+.pagecount{
+	padding: 10px;
+}
+.textarea-width{
+	width: 1000px;
+}
+.submit-margin{
+	margin-left: 20px;
+}
+.panel-heading{
+	text-align: center;
+	font-size: 17px;
+}
+.btnUpload{
+	margin-top: 5px;
+}
+.navbar-header{
+	width: 12.9%;
+}
+/*人物列表开始*/
+.row .col-md-2{
+	margin: 0 10px;
+}
+.restrictImg{
+	  text-align: center;
+}
+.caption{
+	text-align: center;
+}
+/*人物列表结束*/

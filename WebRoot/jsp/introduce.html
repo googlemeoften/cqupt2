@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+	<head>
+		<meta charset="utf-8">
+		<title>未完待续</title>
+		<link href="../css/jquery.fullPage.css" type="text/css" rel="stylesheet">
+		<script type="text/javascript" src="../js/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.fullPage.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.easing.min.js" ></script>
+		<script>
+			$(function(){
+	$('#dowebok').fullpage({
+		sectionsColor: ['#ffffff', '#4BBFC3', '#7BAABE', '#f90'],
+		'navigation': true,
+		afterLoad: function(anchorLink, index){
+			
+			if(index == 2){
+				$('.section2').find('p').delay(400).animate({
+					left: '0'
+				}, 1500, 'easeOutExpo');
+			}
+			if(index == 3){
+				$('.section3').find('p').delay(400).animate({
+					bottom: '0'
+				}, 1500, 'easeOutExpo');
+			}
+			if(index == 4){
+				$('.section4').delay(400).find('p').fadeIn(2000);
+				$("#hadoop").animate({
+					left:"0"
+				},1500,'easeOutExpo');
+			}
+		},
+		onLeave: function(index, direction){
+			
+			if(index == '2'){
+				$('.section2').find('p').delay(400).animate({
+					left: '-120%'
+				}, 1500, 'easeOutExpo');
+			}
+			if(index == '3'){
+				$('.section3').find('p').delay(400).animate({
+					bottom: '-120%'
+				}, 1500, 'easeOutExpo');
+			}
+			if(index == '4'){
+				$('.section4').find('p').delay(400).fadeOut(2000);
+				$("#hadoop").animate({
+				left:"-120%"
+				},1500,'easeOutExpo');
+			}
+		}
+	});
+});
+		</script>
+	</head>
+	<style>
+		.section a{
+			position: absolute;
+			left: 10px;
+			top: 10px;
+			width: 70px;
+			height: 27px;
+			font-size: 16px;
+			line-height: 27px;
+			color: #FFFFFF;
+			display: inline-block;
+			background-color: transparent;
+			border: 1px solid lightgray;
+			text-decoration: none;
+		}
+		.section { text-align: center; font: lighter 50px "Microsoft Yahei"; color: #fff;}
+		.section1{
+			background: url(../images/intro10.jpg) no-repeat center center;background-size: cover;
+		}
+		.section2{
+			background: url(../images/intro7.jpg) no-repeat center center;background-size: cover;
+		}
+		.section3{
+			background: url(../images/intro9.jpg) no-repeat center center;background-size: cover;
+		}
+		.section4{
+			background: url(../images/intro8.jpg) no-repeat center center;background-size: cover;
+		}
+		.section2 p { position: relative;left: -120%; }
+		.section3 p {position: relative; bottom: -120%;}
+		.section4 p { display: none;}
+		#hadoop{position: relative;left: -120%;top:10%;}
+	</style>
+
+	<body>
+		<div id="dowebok">
+			<div class="section section1">
+				<a href="../index.jsp">返回</a>
+				<h3>重邮信安</h3>
+				<p>勇于创新，敢于实践</p>
+			</div>
+			<div class="section section2">
+				<a href="../index.jsp">返回</a>
+				<h3>信安团队</h3>
+				<p>
+				 凝聚产生力量；团结诞生希望。
+				</p>
+			</div>
+			<div class="section section3">
+				<a href="../index.jsp">返回</a>
+				<h3>信安团队</h3>
+				<p>成为一个技术牛人并非难事但决非易事，只要不懈努力</p>
+			</div>
+			<div class="section section4">
+				<a href="../index.jsp">返回</a>
+				<h3>我们的信念</h3>
+				<p>以经验为马，以汗为泉，携手并进。</p>
+				<img id="hadoop" src="../images/hadoop2.png">
+				
+			</div>
+		</div>
+	</body>
+
+</html>

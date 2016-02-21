@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper  
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.cqupt.mapper.NewsMapper">
+	
+	<select id="findNewsById" parameterType="int" resultType="news">
+		select * from news where nid=#{nid}
+	</select>
+	
+	<insert id="addNews" parameterType="news">
+		insert into news(title,author,publishtime,image,path)
+		value(#{title},#{author},#{publishtime},#{image},#{path});
+	</insert>
+	<select id="findAllNewsList" resultType="news">
+		select * from news 
+	</select>
+	<delete id="deleteNews" parameterType="int">
+		delete from news where nid=#{nid}
+	</delete>
+	
+</mapper> 

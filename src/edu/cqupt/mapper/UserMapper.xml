@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper  
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.cqupt.mapper.UserMapper">
+	
+	<select id="findAllUser" resultType="user">
+		select * from tb_user
+	</select>
+	
+	<select id="findUserByProperties" parameterType="user" resultType="user">
+		select * from tb_user
+		<where>
+			<if test="uid!=null">
+				and uid=#{uid}
+			</if>
+			<if test="username!=null">
+				and username=#{username}
+			</if>
+			<if test="email!=null">
+				and email=#{email}
+			</if>
+			<if test="code!=null">
+				and code=#{code}
+			</if>
+		</where>
+	</select>
+	
+	<insert id="addUser" parameterType="user">
+		insert into tb_user (username,password,email,code,state) value
+		(#{username},#{password},#{email},#{code},#{state})
+	</insert>
+	
+	<update id="updateState" parameterType="user">
+		update tb_user set state=#{state} where uid=#{uid}
+	</update>
+	<delete id="deleteUser" parameterType="int"> 
+		delete from tb_user where uid=#{uid}
+	</delete>
+</mapper> 

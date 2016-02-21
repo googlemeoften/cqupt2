@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper  
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.cqupt.mapper.ProjectMapper">
+
+	<resultMap type="project" id="projectAndImages">
+		<id column="pid" property="pid"/>
+		<result column="name" property="name"/>
+		<result column="joinperson" property="joinperson"/>
+		<result column="awards" property="awards"/>
+		<result column="description" property="description"/>
+		<collection property="imageList" ofType="image">
+			<id column="image_id" property="image_id"/>
+			<result column="path" property="path"/>
+			<result column="image_pid" property="image_pid"/>
+		</collection>
+	</resultMap>
+	
+	<select id="findAllProject" resultMap="projectAndImages">
+		SELECT * FROM project,image WHERE project.pid=image.image_pid ORDER BY TIME DESC
+	</select>
+	
+	<select id="findProjectById" parameterType="int" resultMap="projectAndImages">
+		SELECT * FROM project,image WHERE project.pid =#{pid} AND project.pid=image.image_pid ORDER BY TIME DESC
+	</select>
+	
+	<insert id="addProject" parameterType="project">
+		<selectKey keyProperty="pid" resultType="int">
+            select LAST_INSERT_ID()
+        </selectKey>
+		insert into project(name,joinperson,awards,description,time)
+		values(#{name},#{joinperson},#{awards},#{description},#{time})
+	</insert>
+	
+	<delete id="deleteProject" parameterType="int">
+		DELETE FROM project,image USING project,image WHERE project.pid=image.image_pid and project.pid=#{pid}
+	</delete>
+</mapper> 
